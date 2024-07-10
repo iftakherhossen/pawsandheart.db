@@ -1,5 +1,5 @@
 from django.db import models
-from user.models import User
+from user.models import UserModel
 
 GENDER = (
     ('Male', 'Male'),
@@ -36,7 +36,7 @@ class Pet(models.Model):
     
 class Review(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
-    reviewer = models.ForeignKey(User, on_delete=models.CASCADE)
+    reviewer = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     review = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     rating = models.CharField(max_length=10, choices=STAR_CHOICES)
