@@ -25,11 +25,12 @@ class Pet(models.Model):
     name = models.CharField(max_length=50)
     species = models.ForeignKey(Species, related_name='species', on_delete=models.CASCADE)
     age = models.CharField(max_length=50)
+    price = models.CharField(max_length=20, blank=True, null=True)
     gender = models.CharField(max_length=10, choices=GENDER)
     health = models.CharField(max_length=50)
     description = models.TextField()
     image = models.ImageField(upload_to="pet/images/")
-    created_on = models.DateTimeField(auto_now_add=True)
+    created_on = models.DateTimeField(auto_now_add=True)    
     
     def __str__(self):
         return self.name
