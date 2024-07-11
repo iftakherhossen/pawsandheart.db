@@ -5,7 +5,7 @@ from .views import SpeciesViewSet, PetViewSet, ReviewViewSet
 router = DefaultRouter()
 
 router.register('species', SpeciesViewSet)
-router.register('pet', PetViewSet)
+router.register('list', PetViewSet)
 router.register('reviews', ReviewViewSet)
 
 urlpatterns = [

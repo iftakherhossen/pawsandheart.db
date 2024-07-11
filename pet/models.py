@@ -25,7 +25,7 @@ class Pet(models.Model):
     name = models.CharField(max_length=50)
     species = models.ForeignKey(Species, related_name='species', on_delete=models.CASCADE)
     age = models.CharField(max_length=50)
-    price = models.CharField(max_length=20, blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
     gender = models.CharField(max_length=10, choices=GENDER)
     health = models.CharField(max_length=50)
     description = models.TextField()
