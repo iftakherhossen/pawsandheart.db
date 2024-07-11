@@ -7,14 +7,15 @@ class SpeciesSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class PetSerializer(serializers.ModelSerializer):
-    # species = serializers.StringRelatedField(many=False)
+    species = serializers.StringRelatedField(many=False)
     
     class Meta:
         model = Pet
         fields = '__all__'
         
 class ReviewSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField(many=False)
+    pet = serializers.StringRelatedField(many=False)
+    reviewer = serializers.StringRelatedField(many=False)
     
     class Meta:
         model = Review
