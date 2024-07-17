@@ -21,7 +21,6 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         queryset = super().get_queryset()
         user_id = self.request.query_params.get('user', None)
-        user = self.request.query_params.get('user', None)
         if user_id:
             queryset = queryset.filter(user_id=user_id)
         return queryset
@@ -67,11 +66,12 @@ class UserLoginApiView(APIView):
             username = serializer.validated_data['username']
             password = serializer.validated_data['password']
             user = authenticate(username=username, password=password)
+            user_model = UserModel.objects.get(user=user)
             
             if user:
                 token, _ = Token.objects.get_or_create(user=user)
                 login(request, user)
-                return Response({'token': token.key, 'user_id': user.id})
+                return Response({'token': token.key, 'user_id': user_model.id})
             else:
                 return Response({'error': "Invalid Credentials!"})
         return Response(serializer.errors)
