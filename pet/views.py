@@ -22,6 +22,10 @@ class PetViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]    
     search_fields = ['name', 'species__name']
     
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.order_by('adopted')
+    
 class RandomPetViewSet(viewsets.ModelViewSet):
     queryset = Pet.objects.filter(adopted=False).order_by('?')[:8]
     serializer_class = PetSerializer
