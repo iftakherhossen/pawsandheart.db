@@ -30,7 +30,8 @@ class Pet(models.Model):
     health = models.CharField(max_length=50)
     description = models.TextField()
     image = models.ImageField(upload_to="pet/images/")
-    created_on = models.DateTimeField(auto_now_add=True)    
+    created_on = models.DateTimeField(auto_now_add=True)
+    adopted = models.BooleanField(default=False)
     
     def __str__(self):
         return self.name

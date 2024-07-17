@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Species, Pet, Review
+from user.serializers import UserSerializer
+    
 
 class SpeciesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,10 +15,7 @@ class PetSerializer(serializers.ModelSerializer):
         model = Pet
         fields = '__all__'
         
-class ReviewSerializer(serializers.ModelSerializer):
-    pet = serializers.StringRelatedField(many=False)
-    reviewer = serializers.StringRelatedField(many=False)
-    
+class ReviewSerializer(serializers.ModelSerializer):    
     class Meta:
         model = Review
         fields = '__all__'
