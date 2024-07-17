@@ -2,7 +2,10 @@ asgiref
 certifi
 distlib
 dj-database-url
+dj-rest-auth
 Django
+django-allauth
+django-cors-headers
 django-crispy-forms
 django-email
 django-environ
